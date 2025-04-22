@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Python environment files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Data files (optional: ignore if files are regenerated locally)
+data/sales_transactions.csv
+data/sample_10000.csv
+data/customers.csv
+data/stores.csv
+
+# Logs (if added later)
+*.log
+
+# Jupyter Notebook checkpoints (if used)
+.ipynb_checkpoints/
+
+# VSCode settings (if using)
+.vscode/
+
+# Temporary files
+*.bak
+*.tmp
+~$*

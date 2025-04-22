@@ -1,0 +1,16 @@
+# requirements.txt
+
+# Core libraries (standard with Python 3.8+ but listed for clarity)
+uuid
+csv
+random
+datetime
+os
+
+# Note:
+# No external dependencies required (pure standard library)
+# Compatible with Python 3.8, 3.9, 3.10, 3.11
+
+# Optional:
+# If you later want to add optional CLI tools, visualization, or richer data manipulation,
+# you might extend this list (e.g., pandas, argparse).
