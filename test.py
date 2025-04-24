@@ -1,7 +1,15 @@
 import pycountry
+import random
 
-country = pycountry.countries.get(name="United States")
-subdivisions = pycountry.subdivisions.get(country_code=country.alpha_2)
-
-for state in subdivisions:
-    print(state.name)
+def get_random_states(country_name, k=5):
+    country = pycountry.countries.get(name=country_name)
+    if not country:
+        raise ValueError(f"Country not found: {country_name}")
+    
+    subdivisions = pycountry.subdivisions.get(country_code=country.alpha_2)
+    states = [s.name for s in subdivisions]
+    
+    if not states:
+        raise ValueError(f"No subdivisions found for: {country_name}")
+    
+    return random.sample(states, min(k, len(states)))
