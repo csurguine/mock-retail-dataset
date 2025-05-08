@@ -106,8 +106,11 @@ def generate_stores():
             'StoreSize': store_size
         })
     return stores
+# --- New: Product Generation Function ---
+def generate_products():
+    return PRODUCTS
 
-
+# --- Updated: Transaction Generation Function (No Product Redundancy) ---
 def generate_transactions(customers, stores):
     transactions = []
     start_date = datetime(2015, 1, 1)
@@ -129,22 +132,8 @@ def generate_transactions(customers, stores):
         transactions.append({
             'TransactionID': transaction_id,
             'StoreID': store['StoreID'],
-            'StoreName': store['StoreName'],
-            'City': store['City'],
-            'State': store['State'],
-            'Country': store['Country'],
-            'Region': store['Region'],
-            'Currency': store['Currency'],
             'CustomerID': customer['CustomerID'],
-            'CustomerName': customer['CustomerName'],
-            'CustomerSegment': customer['CustomerSegment'],
-            'AgeGroup': customer['AgeGroup'],
-            'Gender': customer['Gender'],
             'ProductID': product['ProductID'],
-            'ProductName': product['ProductName'],
-            'Department': product['Department'],
-            'Category': product['Category'],
-            'SubCategory': product['SubCategory'],
             'Quantity': quantity,
             'Price': total_price,
             'TransactionDate': transaction_datetime,
@@ -152,6 +141,7 @@ def generate_transactions(customers, stores):
             'CampaignFlag': campaign_flag
         })
     return transactions
+
 
 # --- Main Execution ---
 
@@ -173,6 +163,13 @@ def main():
         writer = csv.DictWriter(f, fieldnames=stores[0].keys())
         writer.writeheader()
         writer.writerows(stores)
+
+    print('Generating products...')
+    products = generate_products()
+    with open(f'{DATA_FOLDER}/products.csv', mode='w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=products[0].keys())
+        writer.writeheader()
+        writer.writerows(products)
 
     print('Generating transactions...')
     transactions = generate_transactions(customers, stores)
